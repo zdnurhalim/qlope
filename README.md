@@ -64,3 +64,24 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Installation for the 1st time
+
+- I assume that you have know how to use github, docker and already installed docker.
+- Forking this repo
+- Pull repo from your forking repo not the origin one.
+- Create remote from the original repo using this script on your terminal ``` git remote add {up-to-you-remote-name} git@github.com:zdnurhalim/qlope-main.git ```
+- Build the docker image on terminal with the script ``` docker build --no-cache ```
+- After build of docker image, run this script for create and start container of from the image ``` docker compose up --force-recreate -d ```
+- After the container created, run this script for enter into container ``` docker exec -it ${CONTAINER_PHP} sh ```
+- After run it, go inside to web container and run ``` php artisan key:generate ```
+- And finish your apps ready to develop. Try to run http://localhost:9000 if Laravel logo show up that means you're ready develop this apps.
+
+## Running unit test
+- Assume that the image of system already build
+- Run this script for running unit test ``` docker exec web ./vendor/bin/phpunit```
+
+## Running database migrate
+- Assume that the image of system already build
+- Run this script for running migration of database ``` docker exec web php artisan migrate```
+
